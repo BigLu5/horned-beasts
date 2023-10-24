@@ -4,12 +4,12 @@ export default function Gallery() {
   return (
     <div>
       <HornedBeast
-        title="Rhino"
+        title="Goat"
         imgUrl="./src/img/goat.JPG"
         description="The Goat"
       />
       <HornedBeast
-        title="Elephant"
+        title="Bull"
         imgUrl="./src/img/bull.jpg"
         description="The Bull"
       />
