@@ -1,5 +1,7 @@
-import React from "react";
-
 export default function Header() {
-  return <div className="Header">Header</div>;
+  return (
+    <header>
+      <h1>Gallery of Horned Beasts</h1>
+    </header>
+  );
 }
