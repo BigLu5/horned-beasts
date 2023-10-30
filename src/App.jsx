@@ -3,17 +3,50 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
 import beastArr from "./Data";
+import { useState } from "react";
+import SelectedBeast from "./components/SelectedBeast";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [shownBeast, setShownBeast] = useState({});
+  const [horns, setHorns] = useState("");
+
+  function handleFilter(event) {
+    setHorns(event.target.value);
+  }
+
+  function handleShowModal(beast) {
+    setShowModal(!showModal);
+    setShownBeast(beast);
+  }
+
   return (
-    <div className="Gallery">
+    <div>
       <Header />
       <main>
-        <div className="animals">
-          <Gallery beasts={beastArr} />
-        </div>
+        <form>
+          <label>Filter by horn quantity:</label>
+          <select onChange={handleFilter}>
+            <option value="">All</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="100">100</option>
+          </select>
+        </form>
+        <Gallery
+          handleShowModal={handleShowModal}
+          beastArr={beastArr}
+          horns={horns}
+        />
       </main>
       <Footer />
+      {showModal && (
+        <SelectedBeast
+          shownBeast={shownBeast}
+          handleShowModal={handleShowModal}
+        />
+      )}
     </div>
   );
 }
